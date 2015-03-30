@@ -1,0 +1,122 @@
+/* -------------------- GENERAL  -------------------- */
+body{
+  font-size:16px;
+  background-color: #000;
+  color: #fff;
+}
+
+.container{
+  position: relative;
+}
+
+section{width: 100%; position: relative;}
+
+.hr{
+  width: 100%; height: 1px;
+  background-color: #fff;
+  margin:25px 0;
+}
+
+h2{
+  text-transform: uppercase;
+  font-size: 26px;
+}
+
+.txtc{text-align: center;}
+.txtr{text-align: right;}
+.texl{text-align: left;}
+
+a.red, a.blue{
+  display: block;
+  position: absolute;
+  padding: 8px 14px;
+  height: 40px; 
+  font-size: 18px;
+  color: #fff;
+  -webkit-transition: all 0.3s;
+     -moz-transition: all 0.3s;
+      transition: all 0.3s;
+}
+
+a.red:before, a.blue:before{
+  content: '\e805';
+  font-family: "fontello";
+  font-size: 100%;
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .1em;
+  text-align: center;
+}
+
+a.red{  background-color: rgba(200,0,0,0.8);}
+a.blue{  background-color: rgba(0,107,175,0.8);}
+a.red:hover, a.red:active{  background-color: rgba(200,0,0,1); text-decoration: none;}
+a.blue:hover, a.blue:active{  background-color: rgba(0,107,175,1); text-decoration: none;}
+
+.tr{
+  -webkit-transition: all 0.3s;
+     -moz-transition: all 0.3s;
+      transition: all 0.3s;
+}
+
+/* -------------------- Section 1 -------------------- */
+section#section1{
+  background: url(../img/bg-1.jpg) no-repeat fixed top center transparent;
+  height: 935px;
+  margin-top: 51px;
+}
+
+#section1 .row:first-child {
+    margin-top: 90px;
+}
+
+a#link1{left:50%; top:50%; z-index: 85; margin:6px 0px 0px 310px;}
+a#link2{left:50%; top:50%; z-index: 85; margin:120px 0px 0px 187px;}
+a#link3{left:50%; top:50%; z-index: 85; margin:216px 0px 0px 40px;}
+
+
+/* -------------------- Section 2 -------------------- */
+section#section2 {
+  background: url(../img/bg-2.jpeg) no-repeat top center transparent;
+  height: 900px;
+  position: absolute;
+  z-index: 100;
+}
+
+section#section2 #float1 {
+  display: block; position: absolute; width: 327px; height: 400px;
+  background: url(../img/self-protrait.jpeg) no-repeat top center transparent;
+  left:50%;
+  margin-left: -476px;
+  bottom: 31px;
+  z-index: 81;
+}
+
+#section2 .row:first-child {
+  margin-top: 60px;
+}
+
+.p-bg {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+a#link4{right:0%; top:4%; z-index: 85; margin:0px 0px 0px 0px;}
+a#link5{left:0%;  top:35%; z-index: 85; margin:0px 0px 0px 0px;}
+a#link6{left:37%; top:68%; z-index: 85; margin:0px 0px 0px 0px;}
+a#link7{right:-17%; top:80%; z-index:85; margin:0px 0px 0px 0px;}
+
+/* -------------------- Section 3 -------------------- */
+section#section3{
+  background: url(../img/bg-3.jpg) no-repeat fixed top center transparent;
+  height: 900px;
+  margin-top: 900px;
+  padding-top: 128px;
+  padding-bottom: 40px;
+}
+
+#section3 .row:last-child{
+  margin-top: 50px;
+}
