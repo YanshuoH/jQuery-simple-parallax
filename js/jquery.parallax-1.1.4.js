@@ -1,8 +1,8 @@
 /*
 Plugin: jQuery Parallax
-Version 1.1.3
-Original Author: Ian Lunn
-Modified by Yanshuo HUANG
+Version 1.2.0
+Original Author: Ian Lunn (Github: https://github.com/IanLunn/jQuery-Parallax)
+Modified by Yanshuo HUANG (Github: https://github.com/YanshuoH/jQuery-simple-parallax)
 
 Dual licensed under the MIT and GPL licenses:
 http://www.opensource.org/licenses/mit-license.php
@@ -16,32 +16,41 @@ http://www.gnu.org/licenses/gpl.html
     $window.resize(function () {
         windowHeight = $window.height();
     });
-    var getCssValue = function(elem, cssName) {
-        return parseInt(elem.css(cssName).replace("px", ""));
-    }
 
     var mouvement = {
-        'margin-left': function(elem, marginLeftOriginalValue, currentWindowTop, speedFactor) {
-            elem.css('margin-left', marginLeftOriginalValue - currentWindowTop * speedFactor + 'px');
+        'margin-top': function(elem, originalValue, currentWindowTop, speedFactor) {
+            elem.css('margin-top', originalValue + currentWindowTop * speedFactor + 'px');
         },
-        // 'margin-left:right': function(elem, marginLeftOriginalValue, currentWindowTop, speedFactor) {
-        //     elem.css('margin-left', marginLeftOriginalValue + currentWindowTop * speedFactor + 'px');
-        // },
-        'margin-right': function(elem, marginLeftOriginalValue, currentWindowTop, speedFactor) {
-            elem.css('margin-right', marginLeftOriginalValue + currentWindowTop * speedFactor + 'px');
+        'margin-left': function(elem, originalValue, currentWindowTop, speedFactor) {
+            elem.css('margin-left', originalValue - currentWindowTop * speedFactor + 'px');
         },
-        // 'margin-right:right': function(elem, marginLeftOriginalValue, currentWindowTop, speedFactor) {
-        //     elem.css('margin-right', marginLeftOriginalValue - currentWindowTop * speedFactor + 'px');
-        // },
+        'margin-right': function(elem, originalValue, currentWindowTop, speedFactor) {
+            elem.css('margin-right', originalValue + currentWindowTop * speedFactor + 'px');
+        },
+        'background-position-x': function(elem, originalValue, currentWindowTop, speedFactor) {
+            elem.css('background-position-x', originalValue + currentWindowTop * speedFactor + '%');
+        },
+        'background-position-y': function(elem, originalValue, currentWindowTop, speedFactor) {
+            elem.css('background-position-y', originalValue + currentWindowTop * speedFactor + '%');
+        },
+        'height': function(elem, originalValue, currentWindowTop, speedFactor) {
+            elem.css('height', originalValue + currentWindowTop * speedFactor + 'px');
+        },
     }
 
     $.fn.parallax = function(name, speedFactor, outerHeight) {
         var $this = $(this);
-        var marginLeftOriginalValue = parseInt($this.css('margin-left').replace('px', ''));
         var getHeight;
         var firstTop;
         var windowPreviewTop;
-        var paddingTop = 0;
+        var originalValue = $this.css(name);
+
+        console.log($this.css(name));
+        if ($this.css(name).search('%') > -1) {
+            originalValue = parseInt(originalValue.replace('%', ''));
+        } else if ($this.css(name).search('px') > -1) {
+            originalValue = parseInt(originalValue.replace('px', ''));
+        }
 
         //get the starting position of each element to have parallax applied to it
         $this.each(function(){
@@ -65,7 +74,7 @@ http://www.gnu.org/licenses/gpl.html
         windowPreviewTop = $(window).scrollTop();
         // function to be called whenever the window is scrolled or resized
         function update(event, isFirst){
-            var pos = $window.scrollTop();
+            var currentWindowTop = $window.scrollTop();
 
             $this.each(function(){
                 var $element = $(this);
@@ -74,14 +83,14 @@ http://www.gnu.org/licenses/gpl.html
                 var height = getHeight($element);
 
                 // Check if totally above or totally below viewport
-                if (top + height < pos || top > pos + windowHeight) {
+                if (top + height < currentWindowTop || top > currentWindowTop + windowHeight) {
                     return;
                 }
 
-                mouvement[name]($this, marginLeftOriginalValue, pos, speedFactor);
+                mouvement[name]($this, originalValue, currentWindowTop, speedFactor);
             });
 
-            windowPreviewTop = pos;
+            windowPreviewTop = currentWindowTop;
         }
 
         $window.bind('scroll', update).resize(update);

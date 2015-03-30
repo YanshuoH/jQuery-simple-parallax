@@ -105,12 +105,28 @@
   </section>
 
 </div><!-- #wrapper -->
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/jquery.parallax-1.1.4.js"></script>
     <script type="text/javascript">
-
+        // background position
+        $('#section1').parallax('background-position-y', -0.01);
+        $('#section2').parallax('background-position-y', 0.01);
+        $('#section2').parallax('height', 0.01);
+        $('#section3').parallax('background-position-x', 0.01);
+        // section1
+        $('#section1 .row:first-child').parallax('margin-top', 0.9);
+        $('#link1').parallax('margin-left', 0.3);
+        $('#link2').parallax('margin-left', -0.2);
+        $('#link3').parallax('margin-left', -0.1);
+        // section2
+        $('#section2 .row:first-child').parallax('margin-top', 0.2);
+        $('#link5').parallax('margin-left', 0.02);
+        $('#link6').parallax('margin-left', 0.02);
+        $('#link4').parallax('margin-right', 0.1);
+        $('#link7').parallax('margin-right', -0.05);
+        // section 3
+        $('#section3 .row').parallax('margin-top', 0.1);
     </script>
 </body>
 </html>
