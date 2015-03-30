@@ -37,3 +37,7 @@ And most important, change the equations for more reliable effect.
 
 ## Demo
 Here's the demo: http://yanshuoh.github.io/jQuery-simple-parallax/
+
+## Something to be done
+* Optimize demo page's images loading...monster...
+* add more APIs (like a destroy function, update etc.)
