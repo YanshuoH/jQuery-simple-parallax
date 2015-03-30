@@ -45,7 +45,6 @@ http://www.gnu.org/licenses/gpl.html
         var windowPreviewTop;
         var originalValue = $this.css(name);
 
-        console.log($this.css(name));
         if ($this.css(name).search('%') > -1) {
             originalValue = parseInt(originalValue.replace('%', ''));
         } else if ($this.css(name).search('px') > -1) {
