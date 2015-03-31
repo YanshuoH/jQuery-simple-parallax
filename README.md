@@ -38,6 +38,22 @@ And most important, change the equations for more reliable effect.
 ## Demo
 Here's the demo: http://yanshuoh.github.io/jQuery-simple-parallax/
 
-## Something to be done
-* Optimize demo page's images loading...monster...
-* add more APIs (like a destroy function, update etc.)
+## APIs (not exactly)
+* To disable all parallax effect and reset elements original css
+```
+$('body').disableParallax()
+```
+* Access to elements data(), now only reset css available
+```
+$('#link1').data()
+->
+Object {resetParallax: function}
+->
+$('#link1').data().resetparallax()
+```
+
+## Things to be done
+* Disable individual element
+* Restart parallax() after disabled
+* ~~Optimize demo page's images loading...monster...~~
+* ~~add more APIs (like a destroy function, update etc.)~~
