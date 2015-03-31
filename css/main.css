@@ -82,6 +82,19 @@ a.blue:hover, a.blue:active{  background-color: rgba(0,107,175,1); text-decorati
 .row {
   color: #fff;
 }
+
+/* -------------------- Left Widget -------------------- */
+.left-widget {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 80px;
+  height: 50px;
+  width: 170px;
+  z-index: 200;
+  text-align: center;
+  line-height: 3;
+}
+
 /* -------------------- Section 1 -------------------- */
 section#section1{
   background: url(../img/bg-1.min.jpg) no-repeat fixed top center transparent;
