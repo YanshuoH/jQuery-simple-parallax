@@ -38,17 +38,28 @@ http://www.gnu.org/licenses/gpl.html
         },
     }
 
+    var parallaxClassName = 'jquery-parallax-effect';
+
+    $.fn.disableParallax = function() {
+        $('.' + parallaxClassName).each(function() {
+            var $this = $(this);
+            $this.data().resetParallax();
+        });
+        $window.unbind('scroll');
+    }
+
     $.fn.parallax = function(name, speedFactor, outerHeight) {
         var $this = $(this);
         var getHeight;
         var firstTop;
         var windowPreviewTop;
-        var originalValue = $this.css(name);
+        var originalValue;
+        var originalCssValue = $this.css(name);
 
         if ($this.css(name).search('%') > -1) {
-            originalValue = parseInt(originalValue.replace('%', ''));
+            originalValue = parseInt(originalCssValue.replace('%', ''));
         } else if ($this.css(name).search('px') > -1) {
-            originalValue = parseInt(originalValue.replace('px', ''));
+            originalValue = parseInt(originalCssValue.replace('px', ''));
         }
 
         //get the starting position of each element to have parallax applied to it
@@ -77,6 +88,15 @@ http://www.gnu.org/licenses/gpl.html
 
             $this.each(function(){
                 var $element = $(this);
+
+                // add parallax class for event handling
+                $element.addClass(parallaxClassName);
+                $this.data({
+                    resetParallax: function() {
+                        $this.css(name, originalCssValue);
+                        $this.removeClass(parallaxClassName);
+                    }
+                });
 
                 var top = $element.offset().top;
                 var height = getHeight($element);
