@@ -23,7 +23,7 @@ The script use the original value of css, then according to the current window p
 
 ## Options
 Knowing that there's a 'simple' in the repository title, is this plugin works? Yes. Is it powerful? According to the use case.
-For now, it surpport serveral css properties like:
+For now, it support several css properties like:
 * margin-top
 * margin-left
 * margin-right
