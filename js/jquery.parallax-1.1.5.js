@@ -28,14 +28,23 @@ http://www.gnu.org/licenses/gpl.html
             elem.css('margin-right', originalValue + currentWindowTop * speedFactor + 'px');
         },
         'background-position-x': function(elem, originalValue, currentWindowTop, speedFactor) {
-            originalValue = originalValue.split(' ');
-            originalValue[0] = (parseInt(originalValue[0].replace('%', '')) + currentWindowTop * speedFactor) + '%';
-            elem.css('background-position', originalValue.join(' '));
+            if (typeof(originalValue) === 'string') {
+                originalValue = originalValue.split(' ');
+                originalValue[0] = (parseInt(originalValue[0].replace('%', '')) + currentWindowTop * speedFactor) + '%';
+                elem.css('background-position', originalValue.join(' '));
+            } else {
+                elem.css('background-position-x', originalValue + currentWindowTop * speedFactor + '%');
+            }
         },
         'background-position-y': function(elem, originalValue, currentWindowTop, speedFactor) {
-            originalValue = originalValue.split(' ');
-            originalValue[1] = (parseInt(originalValue[1].replace('%', '')) + currentWindowTop * speedFactor) + '%';
-            elem.css('background-position', originalValue.join(' '));
+            if (typeof(originalValue) === 'string') {
+                originalValue = originalValue.split(' ');
+                originalValue[1] = (parseInt(originalValue[1].replace('%', '')) + currentWindowTop * speedFactor) + '%';
+                elem.css('background-position', originalValue.join(' '));
+            } else {
+                elem.css('background-position-y', originalValue + currentWindowTop * speedFactor + '%');
+            }
+
         },
         'height': function(elem, originalValue, currentWindowTop, speedFactor) {
             elem.css('height', originalValue + currentWindowTop * speedFactor + 'px');
